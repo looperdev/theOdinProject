@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/06dcd61619.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <title>Google Clone</title>
@@ -19,8 +23,10 @@
           <ul class="nav-right">
             <li><a href="">Gmail</a></li>
             <li><a href="">Images</a></li>
-            <li><a href="Hamburger"></a></li>
-            <li><button>Sign In</button></li>
+            <li>
+              <a href="""><i class="fas fa-th 2x"></i></a>
+            </li>
+            <li><button class="signinbutton">Sign In</button></li>
           </ul>
         </nav>
       </header>
@@ -30,10 +36,17 @@
           src="img/googlelogo_color_272x92dp.png"
           alt="google logo"
         />
-        <form id="main-form" action="google.com">
-          <input type="text" name="" id="" />
-          <button>Google Search</button>
-          <button>I'm Feeling Lucky</button>
+        <form id="main-form" action="https://google.com/search">
+          <div class="searchbar">
+            <a href=""><i class="fas fa-search"></i></a>
+            <input type="text" name="q" id="search" />
+            <a href=""><i class="fas fa-microphone"></i></a>
+            
+          </div>
+          <div class="buttons">
+            <button>Google Search</button>
+            <button>I'm Feeling Lucky</button>
+          </div>
         </form>
       </div>
       <footer>

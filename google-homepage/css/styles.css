@@ -2,7 +2,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.all {
+a:visited {
+  color: black;
 }
 
 .nav-top {
@@ -10,12 +11,9 @@ body {
   font-size: 0.9em;
   flex-direction: row;
   flex-wrap: nowrap;
+  align-items: baseline;
   justify-content: space-between;
-  align-items: flex-start;
-  align-content: flex-start;
-  justify-content: flex-start;
   height: 10vh;
-  /* align-items: baseline; */
 }
 
 .nav-left {
@@ -34,8 +32,9 @@ body {
 .nav-right {
   display: flex;
   flex-direction: row;
-  align-content: flex-start;
-  justify-content: flex-start;
+  align-items: baseline;
+  /* align-content: flex-end;
+  justify-content: flex-end; */
   padding: 1em;
 }
 
@@ -46,13 +45,16 @@ body {
 
 .content {
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 85vh;
 }
 
 .content #logo {
+  padding-top: 0px;
+  height: 92px;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -62,13 +64,50 @@ body {
   display: flex;
   flex-direction: column;
   align-content: center;
+  justify-content: center;
+}
+
+.searchbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  border: 0.5px solid #d3d3d3;
+  border-radius: 2em;
+  width: 500px;
+}
+
+#search {
+  border: none;
+}
+
+.buttons {
+  margin-top: 1em;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.buttons button {
+  padding: 0.5em;
+  font-size: 0.9em;
+  background-color: white;
+  border: 0.5px solid #d3d3d3;
+  border-radius: 0.5em;
 }
 
 .nav-bottom {
   display: flex;
+  align-items: flex-start;
   font-size: 1em;
   flex-direction: row;
   flex-wrap: nowrap;
+  align-items: center;
   justify-content: space-between;
-  height: 10vh;
+  height: 5vh;
+}
+
+.signinbutton {
+  color: white;
+  background-color: blue;
+  border: blue;
+  padding: 0.5em;
 }
