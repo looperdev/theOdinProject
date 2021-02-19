@@ -1,4 +1,8 @@
-let choices = ["rock", "paper", "scissors"];
+let choices = ["Rock", "Paper", "Scissors"];
+
+const COMPUTER_WINS = "Computer wins.";
+const TIE = "It's a tie.";
+const HUMAN_WINS = "Human wins.";
 
 // Computer plays Game
 
@@ -9,10 +13,6 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
-
-  const COMPUTER_WINS = "Computer wins.";
-  const TIE = "It's a tie.";
-  const HUMAN_WINS = "Human wins.";
 
   test = playerSelection + "_" + computerSelection;
 
@@ -29,4 +29,47 @@ function playRound(playerSelection, computerSelection) {
   };
 
   return combos[test];
+}
+
+function game() {
+  let playerWins = 0;
+  let computerWins = 0;
+
+  while (playerWins < 5 && computerWins < 5) {
+    let playerSelection = prompt(
+      "Enter your selection: Rock or Paper or Scissors: ",
+      "Rock"
+    );
+    computerSelection = computerPlay();
+    let results = playRound(playerSelection, computerSelection);
+
+    if (results === COMPUTER_WINS) {
+      console.log(
+        COMPUTER_WINS +
+          " " +
+          computerSelection +
+          " beats " +
+          playerSelection +
+          "."
+      );
+
+      computerWins++;
+    } else if (results === HUMAN_WINS) {
+      console.log(
+        HUMAN_WINS + " " + playerSelection + " beats " + computerSelection + "."
+      );
+      playerWins++;
+    } else {
+      console.log(
+        TIE + " " + playerSelection + " is equal to " + computerSelection + "."
+      );
+    }
+    console.log("Score is Human:" + playerWins + " Computer:" + computerWins);
+  }
+
+  if (playerWins > computerWins) {
+    console.log("The winner of the match is HUMAN!!!");
+  } else {
+    console.log("The winner of the match is COMPUTER!!!");
+  }
 }
