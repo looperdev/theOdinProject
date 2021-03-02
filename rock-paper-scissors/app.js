@@ -139,7 +139,7 @@ function game() {
 
       // Show reset button
       let resetButton = document.createElement("button");
-      resetButton.textContent = "Reset";
+      resetButton.textContent = "Play Again?";
       resetButton.setAttribute("id", "reset");
       divWinner.appendChild(resetButton);
 
@@ -156,86 +156,26 @@ function game() {
         document.querySelector("#computerScore").textContent = computerWins;
 
         document.querySelector("#scoreResult").textContent = "";
-
-        // Set scores back to zero.
-        // Unlock buttons
-        // Remove scoreResult
-        // Remove divWinner
-        // remove reset button
       };
     }
   }
 
   function humanScissorsPlay() {
     playRound("Scissors", computerPlay());
-    //playerSelection = output[0];
-    //computerSelection = output[1];
-    //results = output[2];
     updateInterface();
     checkForEndGame();
-    //console.log(results);
   }
   function humanRockPlay() {
     playRound("Rock", computerPlay());
-    //playerSelection = output[0];
-    //computerSelection = output[1];
-    //results = output[2];
     updateInterface();
     checkForEndGame();
-    //console.log(results);
   }
 
   function humanPaperPlay() {
     playRound("Paper", computerPlay());
-    //playerSelection = output[0];
-    //computerSelection = output[1];
-    //results = output[2];
     updateInterface();
     checkForEndGame();
-    //console.log(results);
   }
 }
 
 game();
-
-// while (playerWins < 5 && computerWins < 5) {
-//   // let playerSelection = prompt(
-//   //   "Enter your selection: Rock or Paper or Scissors: ",
-//   //   "Rock"
-//   // );
-//   // computerSelection = computerPlay();
-
-//   //let results = playRound(playerSelection, computerSelection);
-//   console.log(results);
-
-//   if (results === COMPUTER_WINS) {
-//     console.log(
-//       COMPUTER_WINS +
-//         " " +
-//         computerSelection +
-//         " beats " +
-//         playerSelection +
-//         "."
-//     );
-
-//     computerWins++;
-//   } else if (results === HUMAN_WINS) {
-//     console.log(
-//       HUMAN_WINS + " " + playerSelection + " beats " + computerSelection + "."
-//     );
-//     playerWins++;
-//   } else {
-//     console.log(
-//       TIE + " " + playerSelection + " is equal to " + computerSelection + "."
-//     );
-//   }
-//   console.log("Score is Human:" + playerWins + " Computer:" + computerWins);
-// }
-// if (playerWins > computerWins) {
-//   console.log("The winner of the match is HUMAN!!!");
-// } else {
-//   console.log("The winner of the match is COMPUTER!!!");
-// }
-// }
-
-// game();
