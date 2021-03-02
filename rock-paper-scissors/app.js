@@ -17,6 +17,19 @@ function game() {
   let playerWins = 0;
   let computerWins = 0;
   let output = "";
+  let bestNumGames = 3;
+
+  let bestNumGamesInput = document.getElementById("numGames");
+  bestNumGamesInput.textContent = bestNumGames;
+
+  let rockButton = document.querySelector("#rock");
+  rockButton.onclick = humanRockPlay;
+
+  let paperButton = document.querySelector("#paper");
+  paperButton.onclick = humanPaperPlay;
+
+  let scissorsButton = document.querySelector("#scissors");
+  scissorsButton.onclick = humanScissorsPlay;
 
   function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
@@ -75,17 +88,82 @@ function game() {
     // ];
   }
 
-  function updateScore() {
-    //console.log("Made it inside update score");
-    let humanScore = document.querySelector("#humanScore");
-    humanScore.textContent = playerWins;
+  function validateInput() {
+    let numGames = +document.getElementById("numGames").value;
 
-    let computerScore = document.querySelector("#computerScore");
-    computerScore.textContent = computerWins;
+    if (numGames < 1) {
+      alert("Number of Games must be 1 or more");
+      return false;
+    }
 
-    let scoreResult = document.querySelector("#scoreResult");
-    scoreResult.textContent = output;
-    console.log(output);
+    return true;
+  }
+
+  function updateInterface() {
+    if (validateInput()) {
+      document.querySelector("#numGames").disabled = true;
+      bestNumGames = document.getElementById("numGames").value;
+
+      let humanScore = document.querySelector("#humanScore");
+      humanScore.textContent = playerWins;
+
+      let computerScore = document.querySelector("#computerScore");
+      computerScore.textContent = computerWins;
+
+      let scoreResult = document.querySelector("#scoreResult");
+      scoreResult.textContent = output;
+    }
+  }
+
+  function checkForEndGame() {
+    //console.log("bestNum " + bestNumGames);
+    if (playerWins >= bestNumGames || computerWins >= bestNumGames) {
+      //alert("inside the end of game");
+      // Disable buttons
+      document.querySelector("#rock").disabled = true;
+      document.querySelector("#paper").disabled = true;
+      document.querySelector("#scissors").disabled = true;
+      // Declare the winner
+      let divWinner = document.createElement("div");
+      divWinner.setAttribute("id", "winner");
+
+      if (playerWins > computerWins) {
+        divWinner.textContent = "Human wins!!!";
+      } else if (computerWins > playerWins) {
+        divWinner.textContent = "Computer wins!!!";
+      } else {
+        divWinner.textContent = "It's a tie";
+      }
+      let scoreResult = document.querySelector("#scoreResult");
+      scoreResult.appendChild(divWinner);
+
+      // Show reset button
+      let resetButton = document.createElement("button");
+      resetButton.textContent = "Reset";
+      resetButton.setAttribute("id", "reset");
+      divWinner.appendChild(resetButton);
+
+      resetButton.onclick = function () {
+        //Unlock best of
+        document.querySelector("#numGames").disabled = false;
+        document.querySelector("#rock").disabled = false;
+        document.querySelector("#paper").disabled = false;
+        document.querySelector("#scissors").disabled = false;
+        playerWins = 0;
+        computerWins = 0;
+
+        document.querySelector("#humanScore").textContent = playerWins;
+        document.querySelector("#computerScore").textContent = computerWins;
+
+        document.querySelector("#scoreResult").textContent = "";
+
+        // Set scores back to zero.
+        // Unlock buttons
+        // Remove scoreResult
+        // Remove divWinner
+        // remove reset button
+      };
+    }
   }
 
   function humanScissorsPlay() {
@@ -93,7 +171,8 @@ function game() {
     //playerSelection = output[0];
     //computerSelection = output[1];
     //results = output[2];
-    updateScore();
+    updateInterface();
+    checkForEndGame();
     //console.log(results);
   }
   function humanRockPlay() {
@@ -101,7 +180,8 @@ function game() {
     //playerSelection = output[0];
     //computerSelection = output[1];
     //results = output[2];
-    updateScore();
+    updateInterface();
+    checkForEndGame();
     //console.log(results);
   }
 
@@ -110,18 +190,10 @@ function game() {
     //playerSelection = output[0];
     //computerSelection = output[1];
     //results = output[2];
-    updateScore();
+    updateInterface();
+    checkForEndGame();
     //console.log(results);
   }
-
-  let rockButton = document.querySelector("#rock");
-  rockButton.onclick = humanRockPlay;
-
-  let paperButton = document.querySelector("#paper");
-  paperButton.onclick = humanPaperPlay;
-
-  let scissorsButton = document.querySelector("#scissors");
-  scissorsButton.onclick = humanScissorsPlay;
 }
 
 game();
