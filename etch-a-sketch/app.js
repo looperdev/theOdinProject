@@ -4,15 +4,16 @@ const divContainer = document.getElementById("container");
 //const boxes = divContainer.getElementsByClassName("box");
 
 const size = 16;
-const pixelSize = 2;
+const pixelSize = 1;
 
 function buildGrid(size) {
   let gridTemplate = "";
   for (let i = 0; i < size; i++) {
-    gridTemplate += pixelSize.toString() + "rem ";
+    gridTemplate += pixelSize.toString() + "fr ";
   }
 
   divContainer.style.gridTemplateColumns = gridTemplate;
+  divContainer.style.gridTemplateRows = gridTemplate;
 
   for (let i = 0; i < size; i++) {
     for (let j = 0; j < size; j++) {
