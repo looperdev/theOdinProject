@@ -23,7 +23,7 @@ function game() {
     computerSelection = computerSelection.toLowerCase();
 
     test = playerSelection + "_" + computerSelection;
-    console.log(test);
+    //console.log(test);
 
     combos = {
       rock_rock: TIE,
@@ -63,6 +63,8 @@ function game() {
         TIE + " " + playerSelection + " is equal to " + computerSelection + ".";
     }
 
+    console.log(output);
+
     // return [
     //   playerSelection,
     //   computerSelection,
@@ -74,6 +76,7 @@ function game() {
   }
 
   function updateScore() {
+    //console.log("Made it inside update score");
     let humanScore = document.querySelector("#humanScore");
     humanScore.textContent = playerWins;
 
@@ -82,8 +85,17 @@ function game() {
 
     let scoreResult = document.querySelector("#scoreResult");
     scoreResult.textContent = output;
+    console.log(output);
   }
 
+  function humanScissorsPlay() {
+    playRound("Scissors", computerPlay());
+    //playerSelection = output[0];
+    //computerSelection = output[1];
+    //results = output[2];
+    updateScore();
+    //console.log(results);
+  }
   function humanRockPlay() {
     playRound("Rock", computerPlay());
     //playerSelection = output[0];
@@ -94,16 +106,7 @@ function game() {
   }
 
   function humanPaperPlay() {
-    output = playRound("Paper", computerPlay());
-    //playerSelection = output[0];
-    //computerSelection = output[1];
-    //results = output[2];
-    updateScore();
-    //console.log(results);
-  }
-
-  function humanScissorsPlay() {
-    output = playRound("Scissors", computerPlay());
+    playRound("Paper", computerPlay());
     //playerSelection = output[0];
     //computerSelection = output[1];
     //results = output[2];
